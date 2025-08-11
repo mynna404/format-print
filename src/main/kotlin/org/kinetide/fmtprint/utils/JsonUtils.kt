@@ -1,4 +1,4 @@
-package org.kinetide.fmtprint.org.kinetide.fmtprint.utils
+package org.kinetide.fmtprint.utils
 
 import com.google.gson.Gson
 

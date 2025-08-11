@@ -1,6 +1,6 @@
-package org.kinetide.fmtprint.org.kinetide.fmtprint
+package org.kinetide.fmtprint
 
-import org.kinetide.fmtprint.org.kinetide.fmtprint.extensions.toJson
+import org.kinetide.fmtprint.extensions.toJson
 
 object Format {
 
