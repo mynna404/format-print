@@ -1,5 +1,6 @@
 package org.kinetide.fmtprint
 
+import org.kinetide.fmtprint.extensions.isJson
 import org.kinetide.fmtprint.extensions.toJson
 
 object Format {
@@ -10,7 +11,9 @@ object Format {
             kotlin.io.println()
             return
         }
-        val className = obj.javaClass.simpleName
+
+        val className = if (obj is String && obj.isJson()) "Json" else obj.javaClass.simpleName
+
         val objectAddress = getObjectAddress(obj)
         val jsonStr = obj.toJson()
 

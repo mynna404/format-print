@@ -2,6 +2,7 @@ package org.kinetide.fmtprint
 
 import org.kinetide.fmtprint.entity.School
 import org.kinetide.fmtprint.entity.Student
+import org.kinetide.fmtprint.extensions.formatPrintln
 import org.kinetide.fmtprint.utils.JsonUtil
 import kotlin.test.Test
 
@@ -10,6 +11,8 @@ class FormatPrintTest {
     @Test
     fun testObject() {
         val student = Student("Kinetide", 18, "Male")
+        // 测试扩展函数
+        student.formatPrintln()
         Format.println(student)
     }
 
@@ -31,6 +34,7 @@ class FormatPrintTest {
     fun testJson() {
         val user = Student("Kinetide", 12, "male")
         val json = JsonUtil.toJson(user)
+        println(json)
         Format.println(json)
     }
 
@@ -62,6 +66,12 @@ class FormatPrintTest {
             Student("Mynna500", 20, "Female")
         )
         Format.println(set)
+    }
+
+    @Test
+    fun testString() {
+        val str = "Kinetide"
+        Format.println(str)
     }
 
 }
