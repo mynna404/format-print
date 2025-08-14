@@ -5,7 +5,11 @@ import org.kinetide.fmtprint.extensions.toJson
 object Format {
     private const val INDENT = "    "
 
-    fun println(obj: Any) {
+    fun println(obj: Any?) {
+        if (obj == null) {
+            kotlin.io.println()
+            return
+        }
         val className = obj.javaClass.simpleName
         val objectAddress = getObjectAddress(obj)
         val jsonStr = obj.toJson()
