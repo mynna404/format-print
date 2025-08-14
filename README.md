@@ -13,12 +13,16 @@ fmt-print 是一个为 Java 和 Kotlin 开发者设计的小型实用库，旨�
 
 Gradle (Kotlin DSL)  
 ```kotlin
-暂未提供
+implementation("io.github.mynna404:format-print:0.0.1")
 ```
 
 Maven  
 ```xml
-暂未提供
+<dependency>
+  <groupId>io.github.mynna404</groupId>
+  <artifactId>format-print</artifactId>
+  <version>0.0.1</version>
+</dependency>
 ```
 
 ### 2. 一行代码打印
@@ -84,4 +88,12 @@ School@2c81ba77 {
 | 打印 JSON 字符串 | `println("""{"x":1,"y":{"z":2}}""")` |
 | Java 项目 | 同样适用：`Format.println(obj);` |
 
+
+## 致谢
+
+本项目使用了以下开源项目：
+
+- [Kotlin](https://github.com/JetBrains/kotlin) - The Kotlin Programming Language.
+- [medivh-publisher](https://github.com/medivh-project/medivh-publisher) - a gradle plugin that publish gradle project to sonatype
+- [Gson](https://github.com/google/gson) - A Java serialization/deserialization library to convert Java Objects into JSON and back
  
