@@ -3,5 +3,5 @@ package org.kinetide.fmtprint.entity
 data class School(
     val name: String,
     val address: String,
-    val students: List<User>
+    val students: List<Student>
 )
