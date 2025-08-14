@@ -11,7 +11,7 @@ repositories {
 
 dependencies {
     implementation("com.google.code.gson:gson:2.13.1")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.13.4")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 
 }
