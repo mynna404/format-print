@@ -24,8 +24,6 @@ Maven
 ### 2. 一行代码打印
 
 ```kotlin
-import io.github.yourorg.fmtprint.println
-
 data class Student(val name: String, val age: Int, val sex: String)
 data class School(val name: String, val address: String, val students: List<Student>)
 
