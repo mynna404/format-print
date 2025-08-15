@@ -13,7 +13,7 @@ fmt-print 是一个为 Java 和 Kotlin 开发者设计的小型实用库，旨�
 
 Gradle (Kotlin DSL)  
 ```kotlin
-implementation("io.github.mynna404:format-print:0.0.1")
+implementation("io.github.mynna404:format-print:0.0.2-beta2")
 ```
 
 Maven  
@@ -21,7 +21,7 @@ Maven
 <dependency>
   <groupId>io.github.mynna404</groupId>
   <artifactId>format-print</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2-beta2</version>
 </dependency>
 ```
 
@@ -42,7 +42,10 @@ fun main() {
         )
     )
 
-    Format.println(school)
+    // 三种均可
+    // student.formatPrintln()
+    Fmt.println(school)
+    // fmt.println(school)
 }
 ```
 
@@ -79,14 +82,14 @@ School@2c81ba77 {
 ---
 
 ## 🛠️ 用法
-其用法与System.out.println() 完全一致
+其用法与`System.out.println()`和`println()`完全一致
 
 | 功能 | 示例 |
 |---|---|
 | 打印任意对象 | `println(myObject)` |
 | 打印 Map / List | `println(mapOf("a" to 1, "b" to 2))` |
 | 打印 JSON 字符串 | `println("""{"x":1,"y":{"z":2}}""")` |
-| Java 项目 | 同样适用：`Format.println(obj);` |
+| Java 项目 | 同样适用：`Fmt.println(obj);` |
 
 
 ## 致谢
