@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "io.github.mynna404"
-version = "0.0.2-beta2"
+version = "0.0.2-beta3"
 
 repositories {
     mavenCentral()
