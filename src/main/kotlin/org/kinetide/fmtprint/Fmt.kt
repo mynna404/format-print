@@ -7,11 +7,3 @@ object Fmt {
     }
 
 }
-
-object fmt {
-
-    fun println(obj: Any?) {
-        FormatPrinter.println(obj)
-    }
-
-}
