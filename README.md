@@ -13,7 +13,7 @@ fmt-print 是一个为 Java 和 Kotlin 开发者设计的小型实用库，旨�
 
 Gradle (Kotlin DSL)  
 ```kotlin
-implementation("io.github.mynna404:format-print:0.0.2-beta2")
+implementation("io.github.mynna404:format-print:0.0.2-beta3")
 ```
 
 Maven  
@@ -21,7 +21,7 @@ Maven
 <dependency>
   <groupId>io.github.mynna404</groupId>
   <artifactId>format-print</artifactId>
-  <version>0.0.2-beta2</version>
+  <version>0.0.2-beta3</version>
 </dependency>
 ```
 
