@@ -1,10 +1,14 @@
 package org.kinetide.fmtprint
 
+import org.kinetide.fmtprint.config.FormatPrintConfig
 import org.kinetide.fmtprint.extensions.isJson
 import org.kinetide.fmtprint.extensions.toJson
 
 object Format {
-    private const val INDENT = "    "
+
+    private const val ONE_INDENT = " "
+
+    private fun indent(): String = ONE_INDENT.repeat(FormatPrintConfig.indentNumber)
 
     fun println(obj: Any?) {
         if (obj == null) {
@@ -30,53 +34,87 @@ object Format {
     private fun formatJsonString(jsonStr: String): String {
         val result = StringBuilder(jsonStr.length * 2)
         var indentLevel = 0
+        var i = 0
 
-        for (char in jsonStr) {
-            when (char) {
-                '{', '[' -> {
-                    result.append(char).append('\n')
-                    result.append(INDENT.repeat(++indentLevel))
+        while (i < jsonStr.length) {
+            when (val char = jsonStr[i]) {
+                '[' -> {
+                    // 预读，判断数组是不是简单类型（纯数字/字符，无嵌套）
+                    val closingIndex = findClosingBracket(jsonStr, i, '[', ']')
+                    if (closingIndex != -1) {
+                        val arrayContent = jsonStr.substring(i, closingIndex + 1).trim()
+                        if (isSimpleArray(arrayContent)) {
+                            result.append(arrayContent.replace(",", ", "))
+                            i = closingIndex
+                        } else {
+                            result.append('[').append('\n')
+                            indentLevel++
+                            result.append(indent().repeat(indentLevel))
+                        }
+                    } else {
+                        result.append('[')
+                    }
                 }
 
-                '}', ']' -> {
+                '{' -> {
+                    result.append('{').append('\n')
+                    indentLevel++
+                    result.append(indent().repeat(indentLevel))
+                }
+
+                '}' -> {
                     result.trimTrailingSpaces()
-                    result.append('\n').append(INDENT.repeat(--indentLevel)).append(char)
+                    result.append('\n').append(indent().repeat(--indentLevel)).append('}')
+                }
+
+                ']' -> {
+                    result.trimTrailingSpaces()
+                    result.append('\n').append(indent().repeat(--indentLevel)).append(']')
                 }
 
                 ',' -> {
-                    result.append(",\n").append(INDENT.repeat(indentLevel))
+                    result.append(",\n").append(indent().repeat(indentLevel))
                 }
 
                 ':' -> {
                     result.append(" = ")
                 }
 
-                ' ' -> {
-                    if (result.shouldKeepSpace()) {
-                        result.append(char)
-                    }
-                }
-
-                '\n', '\r' -> {
-                    // 忽略原有换行符
+                ' ', '\n', '\r' -> {
+                    // 忽略空格和原有换行
                 }
 
                 else -> {
                     result.append(char)
                 }
             }
+            i++
         }
-
         return result.toString()
     }
 
+    private fun findClosingBracket(str: String, startIndex: Int, open: Char, close: Char): Int {
+        var count = 0
+        for (i in startIndex until str.length) {
+            if (str[i] == open) count++
+            if (str[i] == close) count--
+            if (count == 0) return i
+        }
+        return -1
+    }
+
+    private fun isSimpleArray(arrayStr: String): Boolean {
+        // 判断是否形如 [1,2,3] 或 ['a','b']
+        val inner = arrayStr.removePrefix("[").removeSuffix("]").trim()
+        if (inner.isEmpty()) return true
+        return !inner.contains("{") && !inner.contains("[") && !inner.contains("\n")
+    }
+
+
     private fun StringBuilder.trimTrailingSpaces() {
-        while (isNotEmpty() && last() == ' ') {
+        while (isNotEmpty() && (last() == ' ' || last() == '\t')) {
             deleteCharAt(length - 1)
         }
     }
 
-    private fun StringBuilder.shouldKeepSpace(): Boolean {
-        return isNotEmpty() && last() != ' '
-    }
 }
