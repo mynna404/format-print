@@ -1,5 +1,5 @@
 package org.kinetide.fmtprint.extensions
 
-import org.kinetide.fmtprint.Format
+import org.kinetide.fmtprint.FormatPrinter
 
-fun Any.formatPrintln() = Format.println(this)
+fun Any.formatPrintln() = FormatPrinter.println(this)

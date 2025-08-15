@@ -4,7 +4,7 @@ import org.kinetide.fmtprint.config.FormatPrintConfig
 import org.kinetide.fmtprint.extensions.isJson
 import org.kinetide.fmtprint.extensions.toJson
 
-object Format {
+object FormatPrinter {
 
     private const val ONE_INDENT = " "
 
