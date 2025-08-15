@@ -7,3 +7,5 @@ object Fmt {
     }
 
 }
+
+val fmt = Fmt

@@ -13,7 +13,7 @@ class FormatPrintTest {
         val student = Student("Kinetide", 18, "Male", intArrayOf(121, 205, 303))
         // 测试扩展函数
         student.formatPrintln()
-        Fmt.println(student)
+        fmt.println(student)
     }
 
     @Test
@@ -27,7 +27,7 @@ class FormatPrintTest {
                 Student("Mynna500", 20, "Female", intArrayOf(121, 205, 303))
             )
         )
-        Fmt.println(school)
+        fmt.println(school)
     }
 
     @Test
@@ -35,7 +35,7 @@ class FormatPrintTest {
         val user = Student("Kinetide", 12, "male", intArrayOf(121, 205, 303))
         val json = JsonUtil.toJson(user)
         println(json)
-        Fmt.println(json)
+        fmt.println(json)
     }
 
     @Test
@@ -45,7 +45,7 @@ class FormatPrintTest {
             Student("Mynna405", 19, "Male", intArrayOf(121, 205, 303)),
             Student("Mynna500", 20, "Female", intArrayOf(121, 205, 303))
         )
-        Fmt.println(list)
+        fmt.println(list)
     }
 
     @Test
@@ -55,7 +55,7 @@ class FormatPrintTest {
             "Mynna405" to Student("Mynna405", 19, "Male", intArrayOf(121, 205, 303)),
             "Mynna500" to Student("Mynna500", 20, "Female", intArrayOf(121, 205, 303))
         )
-        Fmt.println(map)
+        fmt.println(map)
     }
 
     @Test
@@ -65,13 +65,13 @@ class FormatPrintTest {
             Student("Mynna405", 19, "Male", intArrayOf(121, 205, 303)),
             Student("Mynna500", 20, "Female", intArrayOf(121, 205, 303))
         )
-        Fmt.println(set)
+        fmt.println(set)
     }
 
     @Test
     fun testString() {
         val str = "Kinetide"
-        Fmt.println(str)
+        fmt.println(str)
     }
 
 }
