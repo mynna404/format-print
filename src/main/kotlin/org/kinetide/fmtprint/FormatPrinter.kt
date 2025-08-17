@@ -80,10 +80,6 @@ object FormatPrinter {
                     result.append(" = ")
                 }
 
-                ' ', '\n', '\r' -> {
-                    // 忽略空格和原有换行
-                }
-
                 else -> {
                     result.append(char)
                 }

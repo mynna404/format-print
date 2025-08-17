@@ -70,7 +70,7 @@ class FormatPrintTest {
 
     @Test
     fun testString() {
-        val str = "Kinetide"
+        val str = "What is the meaning of life?"
         fmt.println(str)
     }
 
